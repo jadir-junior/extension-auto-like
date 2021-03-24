@@ -4,6 +4,7 @@ var unlikeNames = [];
 var unlikeBios = [];
 var settime = null;
 var lastBio = "";
+var modalSuperLike = false;
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.data.type === "like") {
@@ -11,6 +12,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     randomPeriod = config.time;
     unlikeNames = config.names;
     unlikeBios = config.bios;
+    modalSuperLike = config.modalSuperLike;
 
     loopLike();
   }
@@ -40,6 +42,7 @@ function haveWord(text, words) {
   }
 
   const result = words?.filter((word) =>
+    // var bioClassName = document.getElementsByClassName("BreakWord");
     text.toLowerCase().includes(word?.name.toLowerCase())
   );
 
@@ -64,8 +67,21 @@ const handleDescription = () => {
   }
 };
 
+const closeModal = () => {
+  const modal = document.getElementsByClassName(
+    "Maw($desktop-modal-width)--ml"
+  );
+
+  if (modal.length) {
+    const buttons = modal[0].getElementsByTagName("button");
+    buttons[1].click();
+  }
+};
+
 const likeOrUnlike = () => {
-  // var bioClassName = document.getElementsByClassName("BreakWord");
+  if (modalSuperLike) {
+    closeModal();
+  }
 
   var name = document.getElementsByClassName("Fz($xl) Fw($bold)")[1]?.innerHTML;
   var description = "";

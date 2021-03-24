@@ -68,7 +68,7 @@ const likeOrUnlike = () => {
   // var bioClassName = document.getElementsByClassName("BreakWord");
 
   var name = document.getElementsByClassName("Fz($xl) Fw($bold)")[1]?.innerHTML;
-  var description = handleDescription();
+  var description = "";
   var unlikeButton = document.getElementsByClassName("button")[1];
   var likeButton = document.getElementsByClassName("button")[3];
 

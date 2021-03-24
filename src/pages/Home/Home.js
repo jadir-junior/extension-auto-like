@@ -90,6 +90,10 @@ const Home = () => {
                 <S.Value>Você não cadastrou nenhum nome ainda!</S.Value>
               )}
             </S.ItemConfiguration>
+            <S.ItemConfiguration>
+              <S.Option>Fechar modal super like: </S.Option>{" "}
+              <S.Value>{modalSuperLike ? "ativado" : "desativado"}</S.Value>
+            </S.ItemConfiguration>
 
             {/* <S.ItemConfiguration>
               <S.Option>Deslikes em palavras da bio: </S.Option> <br />

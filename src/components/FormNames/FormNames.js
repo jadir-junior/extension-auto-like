@@ -1,5 +1,8 @@
 import * as S from "./styles";
 
+import Button from "../Button/Button";
+import Input from "../Input/Input";
+import { Plus as PlusIcon } from "@styled-icons/feather/Plus";
 import { setName } from "../../services/names";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -17,6 +20,10 @@ export const FormNames = ({ onSubmitForm }) => {
   };
 
   const onSubmit = () => {
+    if (!value) {
+      return;
+    }
+
     const name = {
       name: capitalize(value),
       id: uuidv4(),
@@ -29,8 +36,16 @@ export const FormNames = ({ onSubmitForm }) => {
 
   return (
     <S.WrapperInput>
-      <input type="text" onChange={handleNameOnChange} value={value} />
-      <button onClick={onSubmit}>+</button>
+      <Input
+        onChange={handleNameOnChange}
+        value={value}
+        placeholder="Adicionar nome"
+      />
+      <S.WrapperButton>
+        <Button color="primary" onClick={onSubmit}>
+          <PlusIcon size="46" />
+        </Button>
+      </S.WrapperButton>
     </S.WrapperInput>
   );
 };

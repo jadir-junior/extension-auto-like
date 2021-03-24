@@ -1,7 +1,11 @@
 import * as S from "./styles";
 
-const Button = ({ children, onClick }) => {
-  return <S.Button onClick={onClick}>{children}</S.Button>;
+const Button = ({ children, onClick, color }) => {
+  return (
+    <S.Button onClick={onClick} color={color}>
+      {children}
+    </S.Button>
+  );
 };
 
 export default Button;

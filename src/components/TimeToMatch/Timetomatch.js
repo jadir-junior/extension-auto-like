@@ -3,6 +3,7 @@ import { getTime, setTime as setTimeService } from "../../services/time";
 import Card from "../Card/Card";
 import DescriptionFeature from "../DescriptionFeature/DescriptionFeature";
 import Slider from "@material-ui/core/Slider";
+import { convertMilisecondsOnSeconds } from "../../utils/convertTime";
 import { useEffect } from "react";
 import { useState } from "react";
 import { withStyles } from "@material-ui/core";
@@ -29,8 +30,6 @@ const Timetomatch = () => {
 
     setTimeService(time);
   }, [time]);
-
-  const convertMilisecondsOnSeconds = (time) => time / 1000;
 
   const handleChange = (event, newValue) => {
     setTime(newValue);

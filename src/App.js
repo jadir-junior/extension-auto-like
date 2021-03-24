@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-import Bio from "./pages/Bio/Bio";
+import BioPage from "./pages/BioPage/BioPage";
 import Home from "./pages/Home/Home";
 import Name from "./pages/Name/Name";
 import Settings from "./pages/Settings/Settings";
@@ -17,7 +17,7 @@ function App() {
           <Name />
         </Route>
         <Route path="/bio">
-          <Bio />
+          <BioPage />
         </Route>
         <Route path="/">
           <Home />

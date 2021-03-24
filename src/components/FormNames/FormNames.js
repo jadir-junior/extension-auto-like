@@ -3,7 +3,6 @@ import * as S from "./styles";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { Plus as PlusIcon } from "@styled-icons/feather/Plus";
-import { setName } from "../../services/names";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -29,8 +28,7 @@ export const FormNames = ({ onSubmitForm }) => {
       id: uuidv4(),
     };
 
-    setName(name);
-    onSubmitForm();
+    onSubmitForm(name);
     setValue("");
   };
 

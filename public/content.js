@@ -13,6 +13,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     loopLike();
   }
+
+  if (request.data.type === "stop") {
+    loopLike(true);
+  }
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -59,13 +63,9 @@ const likeOrUnlike = () => {
   }
 };
 
-const loopLike = () => {
-  console.log("time:", randomPeriod);
-  console.log("unlike Names", unlikeNames);
-  console.log("unlike bios", unlikeBios);
-
+const loopLike = (stop = false) => {
   settime = setTimeout(() => {
-    if (checkTinder()) {
+    if (checkTinder() && !stop) {
       likeOrUnlike();
       loopLike();
     } else {

@@ -28,7 +28,13 @@ const Home = () => {
     });
   };
 
-  const stop = () => {};
+  const stop = () => {
+    const config = {
+      type: "stop",
+    };
+
+    sendMessage(config, () => {});
+  };
 
   const like = () => {
     const config = {
@@ -63,7 +69,7 @@ const Home = () => {
               <S.Value>{convertMilisecondsOnSeconds(time)} Seg.</S.Value>
             </S.ItemConfiguration>
             <S.ItemConfiguration>
-              <S.Option>Deslikes em nomes: </S.Option>{" "}
+              <S.Option>Deslikes em nomes: </S.Option> <br />
               {!!names.length ? (
                 names.map((name, i) => {
                   return names.length === i + 1 ? (
@@ -78,7 +84,7 @@ const Home = () => {
             </S.ItemConfiguration>
 
             <S.ItemConfiguration>
-              <S.Option>Deslikes em palavras da bio: </S.Option>{" "}
+              <S.Option>Deslikes em palavras da bio: </S.Option> <br />
               {!!bios.length ? (
                 bios.map((bio, i) => {
                   return bios.length === i + 1 ? (

@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-bottom: 16px;
 `;
 
 export const Title = styled.span`

@@ -14,6 +14,7 @@ import { X as XIcon } from "@styled-icons/feather/X";
 import { convertMilisecondsOnSeconds } from "../../utils/convertTime";
 import { getBios } from "../../services/bio";
 import { getNames } from "../../services/names";
+import { getSettingModal } from "../../services/modal";
 import { getTime } from "../../services/time";
 import { useState } from "react";
 
@@ -22,6 +23,7 @@ const Home = () => {
 
   const time = getTime();
   const names = getNames();
+  const modalSuperLike = getSettingModal();
   // const bios = getBios();
 
   const sendMessage = (data, cb) => {
@@ -45,7 +47,7 @@ const Home = () => {
     const config = {
       time: getTime(),
       names: getNames(),
-      bios: getBios(),
+      modalSuperLike: getSettingModal(),
       type: "like",
     };
 

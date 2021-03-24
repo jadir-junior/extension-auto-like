@@ -8,3 +8,11 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   padding: 16px;
 `;
+
+export const SettingItem = styled.div`
+  background-color: white;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;

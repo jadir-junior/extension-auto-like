@@ -2,7 +2,8 @@
 
 import * as S from "./styles";
 
-import { COLORS } from "../../theme/theme";
+import { COLORS, FONT_COLORS } from "../../theme/theme";
+
 import Card from "../../components/Card/Card";
 import CardTitle from "../../components/Card/CardTitle";
 import FabButton from "../../components/FabButton/FabButton";
@@ -14,11 +15,14 @@ import { convertMilisecondsOnSeconds } from "../../utils/convertTime";
 import { getBios } from "../../services/bio";
 import { getNames } from "../../services/names";
 import { getTime } from "../../services/time";
+import { useState } from "react";
 
 const Home = () => {
+  const [liked, setLiked] = useState(false);
+
   const time = getTime();
   const names = getNames();
-  const bios = getBios();
+  // const bios = getBios();
 
   const sendMessage = (data, cb) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -34,6 +38,7 @@ const Home = () => {
     };
 
     sendMessage(config, () => {});
+    setLiked(false);
   };
 
   const like = () => {
@@ -45,6 +50,7 @@ const Home = () => {
     };
 
     sendMessage(config, () => {});
+    setLiked(true);
   };
 
   return (
@@ -73,9 +79,9 @@ const Home = () => {
               {!!names.length ? (
                 names.map((name, i) => {
                   return names.length === i + 1 ? (
-                    <S.Value> {name.name}</S.Value>
+                    <S.Value key={name.id}> {name.name}</S.Value>
                   ) : (
-                    <S.Value>{name.name}, </S.Value>
+                    <S.Value key={name.id}>{name.name}, </S.Value>
                   );
                 })
               ) : (
@@ -111,10 +117,19 @@ const Home = () => {
           <S.ButtonTitle color="warning">Parar</S.ButtonTitle>
         </S.ButtonWrapper>
         <S.ButtonWrapper>
-          <FabButton onClick={like} size="medium">
-            <HeartIcon size={50} style={{ color: COLORS.PRIMARY_COLOR }} />
+          <FabButton onClick={like} size="medium" disabled={liked}>
+            <HeartIcon
+              size={50}
+              style={
+                liked
+                  ? { color: FONT_COLORS.DISABLED_COLOR }
+                  : { color: COLORS.PRIMARY_COLOR }
+              }
+            />
           </FabButton>
-          <S.ButtonTitle color="primary">Auto Like</S.ButtonTitle>
+          <S.ButtonTitle color="primary" disabled={liked}>
+            Auto Like
+          </S.ButtonTitle>
         </S.ButtonWrapper>
       </S.ButtonContainer>
     </S.Wrapper>

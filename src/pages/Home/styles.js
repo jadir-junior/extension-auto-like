@@ -57,14 +57,18 @@ const buttonTitleModifiers = {
   warning: () => css`
     color: ${COLORS.WARNING_COLOR};
   `,
+  disabled: () => css`
+    color: ${COLORS.DISABLED_COLOR};
+  `,
 };
 
 export const ButtonTitle = styled.div`
-  ${({ color }) => css`
+  ${({ color, disabled }) => css`
     font-weight: bold;
     margin-top: 8px;
 
     ${!!color && buttonTitleModifiers[color]}
+    ${!!disabled && buttonTitleModifiers["disabled"]}
   `}
 `;
 

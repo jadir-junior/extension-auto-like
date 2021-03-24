@@ -3,6 +3,7 @@ var randomPeriod = 0;
 var unlikeNames = [];
 var unlikeBios = [];
 var settime = null;
+var lastBio = "";
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.data.type === "like") {
@@ -49,9 +50,25 @@ function haveWord(text, words) {
   return false;
 }
 
+const handleDescription = () => {
+  var bioClassName = document.getElementsByClassName("BreakWord");
+
+  if (bioClassName.length > 1 && lastBio !== bioClassName[1]?.innerText) {
+    lastBio = bioClassName[1]?.innerText;
+    bioClassName = null;
+    return lastBio;
+  } else {
+    lastBio = bioClassName[0]?.innerText;
+    bioClassName = null;
+    return lastBio;
+  }
+};
+
 const likeOrUnlike = () => {
+  // var bioClassName = document.getElementsByClassName("BreakWord");
+
   var name = document.getElementsByClassName("Fz($xl) Fw($bold)")[1]?.innerHTML;
-  var description = document.getElementsByClassName("BreakWord")[0]?.innerHTML;
+  var description = handleDescription();
   var unlikeButton = document.getElementsByClassName("button")[1];
   var likeButton = document.getElementsByClassName("button")[3];
 

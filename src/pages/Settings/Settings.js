@@ -16,12 +16,14 @@ const Settings = () => {
 
         <Card title="Ajustes de deslikes">
           <CardLink to="/names">Nomes</CardLink>
-          <CardLink to="/bio">Bio</CardLink>
+          {/* <CardLink to="/bio">Bio</CardLink> */}
         </Card>
         <DescriptionFeature>
           Essas são suas preferências para dizer em quem não dar likes, pelo
-          nome (ex: Renata, Julia) ou por alguma palavra na descrição (ex:
-          Aquariana, Gamer, Vinho)
+          nome (ex: Renata, Julia)
+          {/* <span> */}
+          {/* ou por alguma palavra na descrição (ex: Aquariana, Gamer, Vinho) */}
+          {/* </span> */}
         </DescriptionFeature>
       </S.Content>
     </S.Wrapper>

@@ -16,6 +16,7 @@ export const Wrapper = styled.button`
     border-radius: 50%;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 28%);
     color: #5c5c5c;
+    cursor: pointer;
 
     ${!!size && wrapperModifiers[size]}
   `}

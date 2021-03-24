@@ -83,7 +83,7 @@ const Home = () => {
               )}
             </S.ItemConfiguration>
 
-            <S.ItemConfiguration>
+            {/* <S.ItemConfiguration>
               <S.Option>Deslikes em palavras da bio: </S.Option> <br />
               {!!bios.length ? (
                 bios.map((bio, i) => {
@@ -98,7 +98,7 @@ const Home = () => {
                   Você não cadastrou nenhuma palavra para bio ainda!
                 </S.Value>
               )}
-            </S.ItemConfiguration>
+            </S.ItemConfiguration> */}
           </div>
         </Card>
       </S.Content>

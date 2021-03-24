@@ -2,11 +2,14 @@
 
 import * as S from "./styles";
 
+import { COLORS } from "../../theme/theme";
 import Card from "../../components/Card/Card";
 import CardTitle from "../../components/Card/CardTitle";
 import FabButton from "../../components/FabButton/FabButton";
+import { Heart as HeartIcon } from "@styled-icons/feather/Heart";
 import { Settings as IconSettings } from "@styled-icons/feather/Settings";
 import { Link } from "react-router-dom";
+import { X as XIcon } from "@styled-icons/feather/X";
 import { convertMilisecondsOnSeconds } from "../../utils/convertTime";
 import { getBios } from "../../services/bio";
 import { getNames } from "../../services/names";
@@ -25,6 +28,8 @@ const Home = () => {
     });
   };
 
+  const stop = () => {};
+
   const like = () => {
     const config = {
       time: getTime(),
@@ -38,12 +43,15 @@ const Home = () => {
 
   return (
     <S.Wrapper>
-      <S.Header>
+      <S.Settings>
         <Link to="/settings">
           <FabButton>
             <IconSettings size={34} />
           </FabButton>
         </Link>
+      </S.Settings>
+      <S.Header>
+        <S.Title>AUTO LIKE</S.Title>
       </S.Header>
 
       <S.Content>
@@ -89,7 +97,20 @@ const Home = () => {
         </Card>
       </S.Content>
 
-      <button onClick={like}>Like</button>
+      <S.ButtonContainer>
+        <S.ButtonWrapper>
+          <FabButton onClick={stop} size="medium">
+            <XIcon size={50} style={{ color: COLORS.WARNING_COLOR }} />
+          </FabButton>
+          <S.ButtonTitle color="warning">Parar</S.ButtonTitle>
+        </S.ButtonWrapper>
+        <S.ButtonWrapper>
+          <FabButton onClick={like} size="medium">
+            <HeartIcon size={50} style={{ color: COLORS.PRIMARY_COLOR }} />
+          </FabButton>
+          <S.ButtonTitle color="primary">Auto Like</S.ButtonTitle>
+        </S.ButtonWrapper>
+      </S.ButtonContainer>
     </S.Wrapper>
   );
 };

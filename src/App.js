@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import Settings from "./pages/Settings/Settings";
+import history from "./utils/history";
 
 function App() {
   // const [time, setTime] = useState("500");
@@ -16,7 +17,7 @@ function App() {
   // };
 
   return (
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route path="/settings">
           <Settings />

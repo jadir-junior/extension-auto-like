@@ -12,7 +12,7 @@ import { Settings as IconSettings } from "@styled-icons/feather/Settings";
 import { Link } from "react-router-dom";
 import { X as XIcon } from "@styled-icons/feather/X";
 import { convertMilisecondsOnSeconds } from "../../utils/convertTime";
-import { getBios } from "../../services/bio";
+// import { getBios } from "../../services/bio";
 import { getNames } from "../../services/names";
 import { getSettingModal } from "../../services/modal";
 import { getTime } from "../../services/time";
@@ -78,7 +78,7 @@ const Home = () => {
             </S.ItemConfiguration>
             <S.ItemConfiguration>
               <S.Option>Deslikes em nomes: </S.Option> <br />
-              {!!names.length ? (
+              {!!names?.length ? (
                 names.map((name, i) => {
                   return names.length === i + 1 ? (
                     <S.Value key={name.id}> {name.name}</S.Value>

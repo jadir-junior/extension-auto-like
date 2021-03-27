@@ -1,5 +1,6 @@
 import { getTime, setTime as setTimeService } from "../../services/time";
 
+import { COLORS } from "../../theme/theme";
 import Card from "../Card/Card";
 import DescriptionFeature from "../DescriptionFeature/DescriptionFeature";
 import Slider from "@material-ui/core/Slider";
@@ -10,7 +11,7 @@ import { withStyles } from "@material-ui/core";
 
 const TinderSlider = withStyles({
   root: {
-    color: "#fd5068",
+    color: COLORS.PRIMARY_COLOR,
   },
 })(Slider);
 

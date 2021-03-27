@@ -6,12 +6,12 @@ import Card from "../../components/Card/Card";
 import CardLink from "../../components/CardLink/CardLink";
 import DescriptionFeature from "../../components/DescriptionFeature/DescriptionFeature";
 import Navbar from "../../components/Navbar/Navbar";
-import { Switch } from "@material-ui/core";
+import Switch from "../../components/Switch/Switch";
 import Timetomatch from "../../components/TimeToMatch/Timetomatch";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const Settings = () => {
+const SettingsPage = () => {
   const [modal, setModal] = useState(!!getSettingModal());
 
   useEffect(() => {
@@ -61,4 +61,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default SettingsPage;

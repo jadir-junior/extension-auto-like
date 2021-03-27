@@ -1,9 +1,9 @@
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import BioPage from "./pages/BioPage/BioPage";
-import Home from "./pages/Home/Home";
-import Name from "./pages/Name/Name";
-import Settings from "./pages/Settings/Settings";
+import HomePage from "./pages/HomePage/HomePage";
+import NamePage from "./pages/NamePage/NamePage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import history from "./utils/history";
 
 function App() {
@@ -11,16 +11,16 @@ function App() {
     <Router history={history}>
       <Switch>
         <Route path="/settings">
-          <Settings />
+          <SettingsPage />
         </Route>
         <Route path="/names">
-          <Name />
+          <NamePage />
         </Route>
         <Route path="/bio">
           <BioPage />
         </Route>
         <Route path="/">
-          <Home />
+          <HomePage />
         </Route>
       </Switch>
     </Router>

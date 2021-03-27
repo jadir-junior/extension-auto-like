@@ -1,3 +1,4 @@
+import { COLORS } from "../../theme/theme";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -9,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const IconWrapper = styled.button`
-  color: #fd5068;
+  color: ${COLORS.PRIMARY_COLOR};
   cursor: pointer;
   background-color: white;
   border: none;

@@ -36,6 +36,12 @@ const checkTinder = () => {
   );
 };
 
+const checkBumble = () => {
+  var base = "https://bumble.com/";
+
+  return window.location.href.startsWith(base + "app");
+};
+
 function haveWord(text, words) {
   if (!text || !words) {
     return false;
@@ -52,20 +58,6 @@ function haveWord(text, words) {
 
   return false;
 }
-
-const handleDescription = () => {
-  var bioClassName = document.getElementsByClassName("BreakWord");
-
-  if (bioClassName.length > 1 && lastBio !== bioClassName[1]?.innerText) {
-    lastBio = bioClassName[1]?.innerText;
-    bioClassName = null;
-    return lastBio;
-  } else {
-    lastBio = bioClassName[0]?.innerText;
-    bioClassName = null;
-    return lastBio;
-  }
-};
 
 const closeModal = () => {
   const modal = document.getElementsByClassName(
@@ -96,10 +88,30 @@ const likeOrUnlike = () => {
   }
 };
 
+const likeOrUnlikeBumble = () => {
+  var name = document.getElementsByClassName(
+    "encounters-story-profile__name"
+  )[0].innerText;
+  var like = document.getElementsByClassName("encounters-action--like")[0];
+  var dislike = document.getElementsByClassName(
+    "encounters-action--dislike"
+  )[0];
+
+  if (haveWord(name, unlikeNames)) {
+    console.log("unlike name:", name);
+    dislike.click();
+  } else {
+    like.click();
+  }
+};
+
 const loopLike = (stop = false) => {
   settime = setTimeout(() => {
     if (checkTinder() && !stop) {
       likeOrUnlike();
+      loopLike();
+    } else if (checkBumble()) {
+      likeOrUnlikeBumble();
       loopLike();
     } else {
       clearTimeout(settime);

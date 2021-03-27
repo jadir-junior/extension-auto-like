@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
 
+import { COLORS } from "../../theme/theme";
+
 const buttonModifiers = {
   primary: () => css`
-    background-color: #fd5068;
+    background-color: ${COLORS.PRIMARY_COLOR};
     color: white;
   `,
 };

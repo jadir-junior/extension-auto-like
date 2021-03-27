@@ -1,3 +1,4 @@
+import { COLORS } from "../../theme/theme";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -16,7 +17,7 @@ export const TitleWrapper = styled.div`
 export const Title = styled.span`
   font-weight: bold;
   font-size: 20px;
-  color: #fd5068;
+  color: ${COLORS.PRIMARY_COLOR};
 `;
 
 export const Subtitle = styled.span`

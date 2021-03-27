@@ -9,7 +9,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { setName as setNameService } from "../../services/names";
 import { useState } from "react";
 
-const Name = () => {
+const NamePage = () => {
   const [names, setNames] = useState(getNames());
 
   const updateList = () => {
@@ -42,4 +42,4 @@ const Name = () => {
   );
 };
 
-export default Name;
+export default NamePage;

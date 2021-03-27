@@ -18,7 +18,7 @@ import { getSettingModal } from "../../services/modal";
 import { getTime } from "../../services/time";
 import { useState } from "react";
 
-const Home = () => {
+const HomePage = () => {
   const [liked, setLiked] = useState(false);
 
   const time = getTime();
@@ -142,4 +142,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

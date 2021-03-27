@@ -18,6 +18,12 @@ export const FormNames = ({ onSubmitForm }) => {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
+  const handleOnKeyDown = (event) => {
+    if (event.key === "Enter") {
+      onSubmit();
+    }
+  };
+
   const onSubmit = () => {
     if (!value) {
       return;
@@ -36,6 +42,7 @@ export const FormNames = ({ onSubmitForm }) => {
     <S.WrapperInput>
       <Input
         onChange={handleNameOnChange}
+        onKeyDown={handleOnKeyDown}
         value={value}
         placeholder="Adicionar nome"
       />

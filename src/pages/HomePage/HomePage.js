@@ -118,9 +118,9 @@ const HomePage = () => {
       <S.ButtonContainer>
         <S.ButtonWrapper>
           <FabButton onClick={stop} size="medium">
-            <XIcon size={50} style={{ color: COLORS.WARNING_COLOR }} />
+            <XIcon size={50} style={{ color: COLORS.DANGER_COLOR }} />
           </FabButton>
-          <S.ButtonTitle color="warning">Parar</S.ButtonTitle>
+          <S.ButtonTitle color="danger">Parar</S.ButtonTitle>
         </S.ButtonWrapper>
         <S.ButtonWrapper>
           <FabButton onClick={like} size="medium" disabled={liked}>

@@ -1,7 +1,7 @@
 export const COLORS = {
-  // PRIMARY_COLOR: "#fd5068",
-  PRIMARY_COLOR: "#ffc629",
+  PRIMARY_COLOR: "#8A05BE",
   WARNING_COLOR: "#7c48c3",
+  DANGER_COLOR: "#ff4444",
   DISABLED_COLOR: "#dadfe6",
 };
 

@@ -57,6 +57,9 @@ const buttonTitleModifiers = {
   warning: () => css`
     color: ${COLORS.WARNING_COLOR};
   `,
+  danger: () => css`
+    color: ${COLORS.DANGER_COLOR};
+  `,
   disabled: () => css`
     color: ${COLORS.DISABLED_COLOR};
   `,

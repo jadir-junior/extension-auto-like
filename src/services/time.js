@@ -3,5 +3,12 @@ export const setTime = (time) => {
 };
 
 export const getTime = () => {
-  return JSON.parse(localStorage.getItem("time"));
+  const time = JSON.parse(localStorage.getItem("time"));
+
+  if (!time) {
+    setTime(1000);
+    return 1000;
+  } else {
+    return time;
+  }
 };

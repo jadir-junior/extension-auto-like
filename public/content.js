@@ -3,8 +3,8 @@ var randomPeriod = 0;
 var unlikeNames = [];
 var unlikeBios = [];
 var settime = null;
-var lastBio = "";
 var modalSuperLike = false;
+var stop = false;
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.data.type === "like") {
@@ -18,7 +18,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 
   if (request.data.type === "stop") {
-    loopLike(true);
+    stop = true;
+    loopLike();
   }
 });
 
@@ -70,21 +71,48 @@ const closeModal = () => {
   }
 };
 
+const likeIsOver = () => {
+  // var loading = document.getElementsByClassName("beacon");
+  // if (loading && loading.getAttribute("aria-busy") === true) {
+  //   stop = true;
+  //   clearTimeout(settime);
+  // }
+};
+
+const isGold = () => {
+  if (
+    !!document.getElementsByClassName("desktopNavbar Bg($c-bluegray)").length
+  ) {
+    return false;
+  }
+
+  return true;
+};
+
 const likeOrUnlike = () => {
+  let unlikeButton = null;
+  let likeButton = null;
+  const name = document.getElementsByClassName("Fz($xl) Fw($bold)")[1]
+    ?.innerHTML;
+  const description = "";
+
   if (modalSuperLike) {
     closeModal();
   }
 
-  var name = document.getElementsByClassName("Fz($xl) Fw($bold)")[1]?.innerHTML;
-  var description = "";
-  var unlikeButton = document.getElementsByClassName("button")[1];
-  var likeButton = document.getElementsByClassName("button")[3];
+  if (isGold()) {
+    unlikeButton = document.getElementsByClassName("button")[1];
+    likeButton = document.getElementsByClassName("button")[3];
+  } else {
+    unlikeButton = document.getElementsByClassName("button")[0];
+    likeButton = document.getElementsByClassName("button")[2];
+  }
 
   if (haveWord(name, unlikeNames) || haveWord(description, unlikeBios)) {
     console.log("unlike name + description:", `${name} - ${description}`);
-    unlikeButton.click();
+    unlikeButton?.click();
   } else {
-    likeButton.click();
+    likeButton?.click();
   }
 };
 
@@ -105,12 +133,12 @@ const likeOrUnlikeBumble = () => {
   }
 };
 
-const loopLike = (stop = false) => {
+const loopLike = () => {
   settime = setTimeout(() => {
     if (checkTinder() && !stop) {
       likeOrUnlike();
       loopLike();
-    } else if (checkBumble()) {
+    } else if (checkBumble() && !stop) {
       likeOrUnlikeBumble();
       loopLike();
     } else {
